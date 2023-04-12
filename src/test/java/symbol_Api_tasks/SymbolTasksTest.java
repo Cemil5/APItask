@@ -47,7 +47,7 @@ public class SymbolTasksTest {
     @Test
     void symbolTest() {
         list.forEach(
-                s -> assertEquals(s.getBaseAsset() + s.getQuoteAsset(), s.getSymbol())
+                s -> assertEquals(s.getBaseAsset() + s.getQuoteAsset(), s.getSymbol(), "all symbols are concatenation of baseAsset and quoteAsset")
         );
     }
 
@@ -55,7 +55,7 @@ public class SymbolTasksTest {
     @Test
     void lowPriceHighPriceTest() {
         list.forEach(
-                s -> assertTrue(Double.parseDouble(s.getHighPrice()) >= Double.parseDouble(s.getLowPrice()))
+                s -> assertTrue(Double.parseDouble(s.getHighPrice()) >= Double.parseDouble(s.getLowPrice()), "each high price is equal or more than low price")
         );
     }
 
@@ -63,7 +63,7 @@ public class SymbolTasksTest {
     @Test
     void lowPriceTest() {
         list.forEach(
-                s -> assertTrue(Double.parseDouble(s.getOpenPrice()) >= Double.parseDouble(s.getLowPrice()),"open price is less than low price")
+                s -> assertTrue(Double.parseDouble(s.getOpenPrice()) >= Double.parseDouble(s.getLowPrice()),"open price: "+ s.getOpenPrice()+ " is less than low price: "+ s.getLowPrice())
         );
     }
 
@@ -71,7 +71,7 @@ public class SymbolTasksTest {
     @Test
     void highPriceTest() {
         list.forEach(
-                s -> assertTrue(Double.parseDouble(s.getOpenPrice()) <= Double.parseDouble(s.getHighPrice()),"open price is higher than high price")
+                s -> assertTrue(Double.parseDouble(s.getOpenPrice()) <= Double.parseDouble(s.getHighPrice()),"open price: "+ s.getOpenPrice()+ " is higher than high price: "+ s.getHighPrice())
         );
     }
 
