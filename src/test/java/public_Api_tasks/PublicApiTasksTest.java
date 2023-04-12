@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PublicApiTasks {
+public class PublicApiTasksTest {
 
     static Response response;
     static PublicPojo publicPojo;
@@ -32,8 +32,8 @@ public class PublicApiTasks {
     @DisplayName("Verify status and content type")
     @Test
     void statusContentType() {
-        assertEquals(200, response.statusCode());
-        assertEquals("application/json", response.contentType());
+        assertEquals(200, response.statusCode(), "status code is not as expected");
+        assertEquals("application/json", response.contentType(), "content type is not application/json");
     }
 
     @DisplayName("Get all data from the list where category = “Animals”  and contain link = “github”")
@@ -82,7 +82,7 @@ public class PublicApiTasks {
     @DisplayName("List all the entries which HTTPS field does not match with link")
     @Test
     void verifyHTTPSField() {
-        System.out.println("\u001B[34m" + "Verifying HTTPS field is true for each https link: " + "\u001B[0m");
+        System.out.println("\u001B[34m" + "Listing all the entries which HTTPS field does not match with link: " + "\u001B[0m");
         System.out.format("| %-45s | %-5s | %-50s %n", "API", "HTTPS", "link");
         System.out.printf("----------------------------------------------------------------------------------------------------------%n");
         publicPojo.getEntries().stream()
