@@ -59,13 +59,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-reporting</artifactId>
-            <version>1.9.2</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
