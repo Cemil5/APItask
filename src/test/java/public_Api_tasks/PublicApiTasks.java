@@ -1,6 +1,5 @@
 package public_Api_tasks;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -23,13 +22,10 @@ public class PublicApiTasks {
     static PublicPojo publicPojo;
 
     @BeforeAll
-    public static void setUp() throws JsonProcessingException {
+    public static void setUp() {
         RestAssured.baseURI = ConfigurationReader.get("public_api_url");
         response = given().accept(ContentType.JSON)
                 .when().get(baseURI);
-//        String body = response.body().asString();
-//        ObjectMapper mapper = new ObjectMapper();
-//        list = mapper.readValue(body, new TypeReference<>() {});
         publicPojo = response.body().as(PublicPojo.class);
     }
 
